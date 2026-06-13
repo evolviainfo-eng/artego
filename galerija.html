@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galerija — Artego Baldų Gamyba</title>
+  <meta name="description" content="Artego baldų gamybos darbų galerija — virtuvės, miegamieji, svetainės ir kiti projektai visoje Lietuvoje.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__logo">
+      <div class="nav__logo-text">
+        <span class="nav__logo-name">Artego</span>
+        <span class="nav__logo-sub">Baldų gamyba</span>
+      </div>
+    </a>
+    <ul class="nav__links">
+      <li><a href="index.html">Pradžia</a></li>
+      <li><a href="apie.html">Apie mus</a></li>
+      <li><a href="galerija.html" class="active">Galerija</a></li>
+      <li><a href="kontaktai.html">Kontaktai</a></li>
+    </ul>
+    <a href="tel:+37060377708" class="nav__cta">+370 603 77708</a>
+    <button class="nav__burger" aria-label="Meniu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="nav__mobile">
+  <button class="nav__mobile-close" aria-label="Uždaryti" style="position:absolute;top:1.5rem;right:2rem;background:none;border:none;color:var(--text);font-size:2rem;cursor:pointer;">✕</button>
+  <a href="index.html">Pradžia</a>
+  <a href="apie.html">Apie mus</a>
+  <a href="galerija.html">Galerija</a>
+  <a href="kontaktai.html">Kontaktai</a>
+  <a href="tel:+37060377708" style="color:var(--accent);font-size:1.2rem;font-family:'Jost',sans-serif;margin-top:1rem;">+370 603 77708</a>
+</div>
+
+<!-- Page Hero -->
+<div class="page-hero">
+  <div class="container">
+    <div class="label">Mūsų darbai</div>
+    <h1 data-reveal>Galerija</h1>
+    <p style="max-width:520px;margin-top:0.75rem;" data-reveal data-reveal-delay="1">Kiekvienas projektas — unikali istorija. Žemiau rasite mūsų sukurtų baldų pavyzdžių įvairiausiose erdvėse.</p>
+  </div>
+</div>
+
+<!-- Filter tabs -->
+<div class="container" style="padding-bottom:2.5rem;">
+  <div class="gallery-filters" style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+    <button class="gallery-filter active" onclick="filterGallery('all', this)">Visi</button>
+    <button class="gallery-filter" onclick="filterGallery('virtuve', this)">Virtuvės</button>
+    <button class="gallery-filter" onclick="filterGallery('miegamasis', this)">Miegamieji</button>
+    <button class="gallery-filter" onclick="filterGallery('svetaine', this)">Svetainės</button>
+    <button class="gallery-filter" onclick="filterGallery('kita', this)">Kita</button>
+  </div>
+</div>
+
+<style>
+.gallery-filter {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.55rem 1.25rem;
+  background: transparent;
+  border: 1px solid var(--border-light);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: var(--transition);
+}
+.gallery-filter:hover { border-color: var(--accent); color: var(--accent); }
+.gallery-filter.active { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+</style>
+
+<!-- Gallery Grid -->
+<section class="section-sm">
+  <div class="container">
+    <div class="gallery-full-grid" id="galleryGrid">
+
+      <div class="gallery-full-item" data-cat="virtuve" data-reveal>
+        <div class="gfi__inner"><img src="assets/photos/photo1.jpg" alt="Virtuvės baldai" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></div>
+        <div class="gfi__label">Virtuvės baldai</div>
+        <div class="gallery-item__overlay" style="position:absolute;inset:0;background:rgba(13,12,11,0.5);opacity:0;transition:opacity 0.35s;display:flex;align-items:center;justify-content:center;">
+          <div class="gallery-item__zoom" style="width:44px;height:44px;border:1px solid rgba(255,255,255,0.4);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="7" r="4"/><path d="M11 11l3 3"/><path d="M5 7h4M7 5v4"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-full-item" data-cat="virtuve" data-reveal data-reveal-delay="1">
+        <div class="gfi__inner"><img src="assets/photos/photo2.jpg" alt="Virtuvės baldai" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></div>
+        <div class="gfi__label">Virtuvės baldai</div>
+        <div class="gallery-item__overlay" style="position:absolute;inset:0;background:rgba(13,12,11,0.5);opacity:0;transition:opacity 0.35s;display:flex;align-items:center;justify-content:center;">
+          <div class="gallery-item__zoom" style="width:44px;height:44px;border:1px solid rgba(255,255,255,0.4);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="7" r="4"/><path d="M11 11l3 3"/><path d="M5 7h4M7 5v4"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-full-item" data-cat="virtuve" data-reveal data-reveal-delay="2">
+        <div class="gfi__inner"><img src="assets/photos/photo3.jpg" alt="Virtuvės baldai" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></div>
+        <div class="gfi__label">Virtuvės baldai</div>
+        <div class="gallery-item__overlay" style="position:absolute;inset:0;background:rgba(13,12,11,0.5);opacity:0;transition:opacity 0.35s;display:flex;align-items:center;justify-content:center;">
+          <div class="gallery-item__zoom" style="width:44px;height:44px;border:1px solid rgba(255,255,255,0.4);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="7" r="4"/><path d="M11 11l3 3"/><path d="M5 7h4M7 5v4"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-full-item" data-cat="virtuve" data-reveal>
+        <div class="gfi__inner"><img src="assets/photos/photo4.jpg" alt="Virtuvės baldai" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></div>
+        <div class="gfi__label">Virtuvės baldai</div>
+        <div class="gallery-item__overlay" style="position:absolute;inset:0;background:rgba(13,12,11,0.5);opacity:0;transition:opacity 0.35s;display:flex;align-items:center;justify-content:center;">
+          <div class="gallery-item__zoom" style="width:44px;height:44px;border:1px solid rgba(255,255,255,0.4);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="7" r="4"/><path d="M11 11l3 3"/><path d="M5 7h4M7 5v4"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-full-item" data-cat="virtuve" data-reveal data-reveal-delay="1">
+        <div class="gfi__inner"><img src="assets/photos/photo5.jpg" alt="Virtuvės baldai" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></div>
+        <div class="gfi__label">Virtuvės baldai</div>
+        <div class="gallery-item__overlay" style="position:absolute;inset:0;background:rgba(13,12,11,0.5);opacity:0;transition:opacity 0.35s;display:flex;align-items:center;justify-content:center;">
+          <div class="gallery-item__zoom" style="width:44px;height:44px;border:1px solid rgba(255,255,255,0.4);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="7" r="4"/><path d="M11 11l3 3"/><path d="M5 7h4M7 5v4"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-full-item" data-cat="virtuve" data-reveal data-reveal-delay="2">
+        <div class="gfi__inner"><img src="assets/photos/photo6.jpg" alt="Virtuvės baldai" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></div>
+        <div class="gfi__label">Virtuvės baldai</div>
+        <div class="gallery-item__overlay" style="position:absolute;inset:0;background:rgba(13,12,11,0.5);opacity:0;transition:opacity 0.35s;display:flex;align-items:center;justify-content:center;">
+          <div class="gallery-item__zoom" style="width:44px;height:44px;border:1px solid rgba(255,255,255,0.4);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="7" r="4"/><path d="M11 11l3 3"/><path d="M5 7h4M7 5v4"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-full-item" data-cat="virtuve" data-reveal style="grid-column:span 2;min-height:320px;">
+        <div class="gfi__inner"><img src="assets/photos/photo7.jpg" alt="Virtuvės baldai" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;"></div>
+        <div class="gfi__label">Virtuvės baldai</div>
+        <div class="gallery-item__overlay" style="position:absolute;inset:0;background:rgba(13,12,11,0.5);opacity:0;transition:opacity 0.35s;display:flex;align-items:center;justify-content:center;">
+          <div class="gallery-item__zoom" style="width:44px;height:44px;border:1px solid rgba(255,255,255,0.4);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="7" r="4"/><path d="M11 11l3 3"/><path d="M5 7h4M7 5v4"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-full-item" data-cat="virtuve" data-reveal>
+        <div class="gfi__inner"><img src="assets/photos/photo10.jpg" alt="Virtuvės baldai" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></div>
+        <div class="gfi__label">Virtuvės baldai</div>
+        <div class="gallery-item__overlay" style="position:absolute;inset:0;background:rgba(13,12,11,0.5);opacity:0;transition:opacity 0.35s;display:flex;align-items:center;justify-content:center;">
+          <div class="gallery-item__zoom" style="width:44px;height:44px;border:1px solid rgba(255,255,255,0.4);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="7" r="4"/><path d="M11 11l3 3"/><path d="M5 7h4M7 5v4"/></svg>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Hover overlay CSS fix -->
+<style>
+.gallery-full-item:hover .gallery-item__overlay { opacity: 1 !important; }
+</style>
+
+<!-- Lightbox -->
+<div class="lightbox" role="dialog" aria-modal="true">
+  <button class="lightbox__close" aria-label="Uždaryti">✕</button>
+  <div class="lightbox__content"></div>
+</div>
+
+<!-- CTA -->
+<section class="cta-banner">
+  <div class="container">
+    <div class="cta-banner__inner">
+      <div class="cta-banner__text">
+        <div class="label">Jūsų eilė</div>
+        <h2 data-reveal>Norite tokių<br>baldų?</h2>
+        <p data-reveal data-reveal-delay="1">Susisiekite su mumis ir aptarkime, kaip galime sukurti jūsų svajonių erdvę.</p>
+      </div>
+      <div class="cta-banner__actions" data-reveal data-reveal-delay="2">
+        <a href="tel:+37060377708" class="cta-phone-big">+370 603 77708</a>
+        <a href="kontaktai.html" class="btn btn-primary">
+          Gauti pasiūlymą
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <div class="footer__brand-name">Artego</div>
+        <div class="footer__brand-sub">Baldų gamyba</div>
+        <p>Individualių baldų projektavimas ir gamyba. Dirbame visoje Lietuvoje su meile ir precizija.</p>
+      </div>
+      <div class="footer__col">
+        <h4>Navigacija</h4>
+        <ul class="footer__links">
+          <li><a href="index.html">Pradžia</a></li>
+          <li><a href="apie.html">Apie mus</a></li>
+          <li><a href="galerija.html">Galerija</a></li>
+          <li><a href="kontaktai.html">Kontaktai</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Kontaktai</h4>
+        <ul class="footer__links">
+          <li><a href="tel:+37060377708">+370 603 77708</a></li>
+          <li><a href="mailto:bg.artego@gmail.com">bg.artego@gmail.com</a></li>
+          <li><a href="https://www.facebook.com/geniukas.baldai/" target="_blank" rel="noopener">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="footer__copy">© 2025 Artego — Baldų gamyba. Visos teisės saugomos.</div>
+      <div class="footer__social">
+        <a href="https://www.facebook.com/geniukas.baldai/" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+function filterGallery(cat, btn) {
+  document.querySelectorAll('.gallery-filter').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.gallery-full-item').forEach(item => {
+    if (cat === 'all' || item.dataset.cat === cat) {
+      item.style.display = '';
+    } else {
+      item.style.display = 'none';
+    }
+  });
+}
+</script>
+</body>
+</html>
