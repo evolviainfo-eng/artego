@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "artego",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "-p", "3008", "-s", "."],
+      "port": 3008
+    }
+  ]
+}

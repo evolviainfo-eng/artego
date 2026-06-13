@@ -24,7 +24,7 @@ if (burger && mobileMenu) {
   mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMobile));
 }
 
-// Reveal on scroll
+// Reveal on scroll — triggers earlier so sections never appear black
 const revealEls = document.querySelectorAll('[data-reveal]');
 if (revealEls.length) {
   const observer = new IntersectionObserver((entries) => {
@@ -34,31 +34,101 @@ if (revealEls.length) {
         observer.unobserve(e.target);
       }
     });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  }, { threshold: 0.05, rootMargin: '0px 0px 60px 0px' });
   revealEls.forEach(el => observer.observe(el));
 }
 
-// Contact form
-const form = document.querySelector('.contact-form');
-if (form) {
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const btn = form.querySelector('[type="submit"]');
-    const success = form.querySelector('.form__success');
-    btn.textContent = 'Siunčiama...';
-    btn.disabled = true;
-    setTimeout(() => {
-      btn.textContent = 'Išsiųsta ✓';
-      if (success) success.style.display = 'block';
-      form.reset();
-      setTimeout(() => {
-        btn.textContent = 'Siųsti užklausą';
-        btn.disabled = false;
-        if (success) success.style.display = 'none';
-      }, 4000);
-    }, 1200);
-  });
+// Form validation helper
+function showFieldError(input, message) {
+  if (!input) return;
+  input.classList.add('input-error');
+  const div = document.createElement('div');
+  div.className = 'field-error';
+  div.textContent = message;
+  input.parentNode.appendChild(div);
 }
+
+function clearFormErrors(form) {
+  form.querySelectorAll('.field-error').forEach(el => el.remove());
+  form.querySelectorAll('.input-error').forEach(el => el.classList.remove('input-error'));
+}
+
+function validateForm(form) {
+  clearFormErrors(form);
+  let valid = true;
+
+  const name = form.querySelector('[name="name"]');
+  if (name && !name.value.trim()) {
+    showFieldError(name, 'Vardas yra privalomas');
+    valid = false;
+  }
+
+  const phone = form.querySelector('[name="phone"]');
+  if (phone) {
+    if (!phone.value.trim()) {
+      showFieldError(phone, 'Telefono numeris yra privalomas');
+      valid = false;
+    } else if (!/^[\+]?[\d\s\-\(\)]{7,}$/.test(phone.value.trim())) {
+      showFieldError(phone, 'Įveskite teisingą telefono numerį');
+      valid = false;
+    }
+  }
+
+  const message = form.querySelector('[name="message"]');
+  if (message && message.hasAttribute('required') && !message.value.trim()) {
+    showFieldError(message, 'Aprašymas yra privalomas');
+    valid = false;
+  }
+
+  return valid;
+}
+
+// Contact form — real submission via formsubmit.co AJAX
+document.querySelectorAll('.contact-form').forEach(form => {
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    if (!validateForm(form)) return;
+
+    const btn = form.querySelector('[type="submit"]');
+    const successEl = form.querySelector('.form__success');
+    const errorEl = form.querySelector('.form__error');
+    const originalHTML = btn.innerHTML;
+
+    btn.innerHTML = 'Siunčiama...';
+    btn.disabled = true;
+    if (errorEl) errorEl.style.display = 'none';
+
+    // Collect all form fields
+    const data = { _subject: 'Nauja užklausa iš artego.lt' };
+    new FormData(form).forEach((val, key) => { data[key] = val; });
+
+    try {
+      const res = await fetch('https://formsubmit.co/ajax/bg.artego@gmail.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data)
+      });
+
+      if (res.ok) {
+        btn.innerHTML = 'Išsiųsta ✓';
+        if (successEl) successEl.style.display = 'block';
+        form.reset();
+        setTimeout(() => {
+          btn.innerHTML = originalHTML;
+          btn.disabled = false;
+          if (successEl) successEl.style.display = 'none';
+        }, 5000);
+      } else {
+        throw new Error('server');
+      }
+    } catch {
+      btn.innerHTML = originalHTML;
+      btn.disabled = false;
+      if (errorEl) errorEl.style.display = 'block';
+    }
+  });
+});
 
 // Lightbox
 const lightbox = document.querySelector('.lightbox');
