@@ -244,6 +244,7 @@ function filterGallery(cat, btn) {
   document.querySelectorAll('.gallery-full-item').forEach(item => {
     if (cat === 'all' || item.dataset.cat === cat) {
       item.style.display = '';
+      item.classList.add('revealed');
       visibleCount++;
     } else {
       item.style.display = 'none';
